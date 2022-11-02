@@ -29,7 +29,7 @@ services:
      - source: idp_encryption
      - source: idp_signing
      - source: idp_sealer     
-   
+
   ldap:
     build: ./ldap/
     networks:
@@ -42,14 +42,14 @@ services:
     secrets:
      - source: sp_key
   
-  simplesamlphp:
-    build: ./simplesamlphp/
-    links:
-      - httpd-proxy:idptestbed
-    networks:
-     - back
-    secrets:
-     - source: ssp_key
+#  simplesamlphp:
+#    build: ./simplesamlphp/
+#    links:
+#      - httpd-proxy:idptestbed
+#    networks:
+#     - back
+#    secrets:
+#     - source: ssp_key
   
 #  php-cas:
 #    build: ./php-cas/
