@@ -90,6 +90,9 @@
         
         <MetadataProvider type="XML" validate="true" path="idp-metadata.xml"/>
 
+        <!-- IdP for SAMLTest -->
+        <!--        <MetadataProvider type="XML" path="samltest-idp-metadata.xml" backingFilePath="local-idp-metadata.xml" legacyOrgNames="true" reloadInterval="7200"/>-->
+
         <!-- Map to extract attributes from SAML assertions. -->
         <AttributeExtractor type="XML" validate="true" reloadChanges="false" path="attribute-map.xml"/>
         
