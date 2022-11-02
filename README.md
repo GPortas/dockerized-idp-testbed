@@ -10,7 +10,7 @@ More documentation is forthcoming, but it's a full working IDP, SP, and LDAP ser
 
 1. Update the `idp/Dockerfile` with the version of the base image you want to test.
 2. Call `docker-compose build` and then `docker-compose up` (or `docker-compose up -d` to run as a daemon).
-3. Browse to `https://idptestbed/` (after setting up an `etc/hosts` file entry pointing to your Docker Host IP), and you can login with `staff1` and `password`.  
+3. Browse to `https://localhost/` (after setting up an `etc/hosts` file entry pointing to your Docker Host IP), and you can login with `staff1` and `password`.  
 4. `ctrl+c` then `docker-compose rm` cleans everything up to try again.
 
 ## Prepping for the Test
@@ -62,5 +62,5 @@ jetty.alpn.defaultProtocol=http/1.1
 
 - Open the browser network analyzer tools. 
 - Ensure that the `protocol` type is shown. 1.
-- Browse to `https://idptestbed/idp/`. Chrome, firefox, and safari should show a protocol of "h2".
-- Try `curl -k -v https://idptestbed/idp/`. "HTTP/1.1" will likely be shown as curl (at least on OS X) does not have http/2 support.
+- Browse to `https://localhost/idp/`. Chrome, firefox, and safari should show a protocol of "h2".
+- Try `curl -k -v https://localhost/idp/`. "HTTP/1.1" will likely be shown as curl (at least on OS X) does not have http/2 support.
