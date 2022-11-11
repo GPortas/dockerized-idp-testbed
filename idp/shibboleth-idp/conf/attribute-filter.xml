@@ -17,7 +17,6 @@
     <AttributeFilterPolicy id="example1">
         <PolicyRequirementRule xsi:type="OR">
             <Rule xsi:type="Requester" value="https://sp.localhost/shibboleth" />
-            <Rule xsi:type="Requester" value="http://localhost/sp/simplesamlphp" />
         </PolicyRequirementRule>
 
         <AttributeRule attributeID="uid">

@@ -13,13 +13,13 @@ services:
 
   idp:
     build: ./idp/
-    depends_on: 
+    depends_on:
      - ldap
     environment:
      - JETTY_MAX_HEAP=64m
      - JETTY_BROWSER_SSL_KEYSTORE_PASSWORD=password
      - JETTY_BACKCHANNEL_SSL_KEYSTORE_PASSWORD=password
-    expose: 
+    expose:
      - "4443"
     networks:
      - back
@@ -28,7 +28,7 @@ services:
      - source: idp_browser
      - source: idp_encryption
      - source: idp_signing
-     - source: idp_sealer     
+     - source: idp_sealer
 
   ldap:
     build: ./ldap/
@@ -36,32 +36,16 @@ services:
      - back
 
   sp:
-    build: ./sp/ 
+    build: ./sp/
     networks:
      - back
     secrets:
      - source: sp_key
-  
-#  simplesamlphp:
-#    build: ./simplesamlphp/
-#    links:
-#      - httpd-proxy:idptestbed
-#    networks:
-#     - back
-#    secrets:
-#     - source: ssp_key
-  
-#  php-cas:
-#    build: ./php-cas/
-#    links:
-#      - httpd-proxy:idptestbed
-#    networks:
-#     - back
 
 networks:
   front:
     driver: bridge
-  back:    
+  back:
     driver: bridge
 
 secrets:
@@ -75,7 +59,5 @@ secrets:
     file: ./secrets/idp/idp-signing.key
   idp_sealer:
     file: ./secrets/idp/sealer.jks
-  ssp_key:
-    file: ./secrets/simplesamlphp/server.pem
   sp_key:
     file: ./secrets/sp/sp-key.pem

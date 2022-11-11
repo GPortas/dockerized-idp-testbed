@@ -4,7 +4,6 @@ Used to validate the following Unicon docker images:
 
 - shibboleth-idp: [https://hub.docker.com/r/unicon/shibboleth-idp](https://github.com/Unicon/shibboleth-idp-dockerized).
 - shibboleth-sp: [https://hub.docker.com/r/unicon/shibboleth-sp](https://github.com/Unicon/shibboleth-sp-dockerized).
-- simplesamlphp: [https://hub.docker.com/r/unicon/simplesamlphp](https://github.com/Unicon/simplesamlphp-dockerized).
 
 More documentation is forthcoming, but it's a full working IDP, SP, and LDAP server that runs under `docker-compose`. 
 
@@ -18,10 +17,6 @@ More documentation is forthcoming, but it's a full working IDP, SP, and LDAP ser
 If testing the Shibboleth IdP build process locally, you'll want to make sure to `docker pull centos:centos7` to ensure that you have the latest before building the IdP. This will ensure that your version will match what Docker Hub will use when it builds. 
 
 Build the IdP with `docker build --tag="unicon/shibboleth-idp:<version>" .`. Make sure the `FROM` entry in testbed's `idp/Dockerfile` matches the tag used in the idp build  or Docker Compose will pull the wrong version when running the Testbed (see step #1).
-
-If testing the SimpleSAMLphp build process locally, you'll want to make sure to `docker pull centos:centos7` to ensure that you have the latest before building the image. This will ensure that your version will match what Docker Hub will use when it builds. 
-
-Build the application with `docker build --tag="unicon/simplesamlphp:<version>" .`. Make sure the `FROM` entry in testbed's `simplesamlphp/Dockerfile` matches the tag used in the ssp build or Docker Compose will pull the wrong version when running the Testbed (see step #1).
 
 ## HTTP/2 support for Shibboleth IdP
 
