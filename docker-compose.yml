@@ -42,6 +42,20 @@ services:
     secrets:
      - source: sp_key
 
+  keycloak:
+    image: 'jboss/keycloak:16.1.1'
+    networks:
+      - back
+    environment:
+      - KEYCLOAK_USER=keycloakdeveladminuser
+      - KEYCLOAK_PASSWORD=keycloakdeveladminpwd
+      - KEYCLOAK_IMPORT=/tmp/oidc-realm.json
+    ports:
+      - '8090:8080'
+    volumes:
+      - './keycloak/oidc-realm.json:/tmp/oidc-realm.json'
+    restart: always
+
 networks:
   front:
     driver: bridge

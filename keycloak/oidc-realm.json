@@ -1,0 +1,22 @@
+{
+  "id": "oidc-realm",
+  "realm": "oidc-realm",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "requiredCredentials": [
+    "password"
+  ],
+  "clients": [
+    {
+      "clientId" : "oidc-client",
+      "redirectUris": ["http://localhost/new"],
+      "webOrigins": ["+"],
+      "standardFlowEnabled": true,
+      "publicClient": true,
+      "attributes": {
+        "pkce.code.challenge.method":"S256"
+      }
+    }
+  ]
+}
