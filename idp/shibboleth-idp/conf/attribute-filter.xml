@@ -9,14 +9,14 @@
     and their options.
 -->
 <AttributeFilterPolicyGroup id="ShibbolethFilterPolicy"
-        xmlns="urn:mace:shibboleth:2.0:afp"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="urn:mace:shibboleth:2.0:afp http://shibboleth.net/schema/idp/shibboleth-afp.xsd">
+                            xmlns="urn:mace:shibboleth:2.0:afp"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:schemaLocation="urn:mace:shibboleth:2.0:afp http://shibboleth.net/schema/idp/shibboleth-afp.xsd">
 
     <!-- Release some attributes to an SP. -->
     <AttributeFilterPolicy id="example1">
         <PolicyRequirementRule xsi:type="OR">
-            <Rule xsi:type="Requester" value="https://sp.localhost/shibboleth" />
+            <Rule xsi:type="Requester" value="https://localhost/auth/realms/oidc-realm/protocol/saml" />
         </PolicyRequirementRule>
 
         <AttributeRule attributeID="uid">

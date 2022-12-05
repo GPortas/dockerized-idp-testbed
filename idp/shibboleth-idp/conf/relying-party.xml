@@ -51,7 +51,7 @@
     <!-- Container for any overrides you want to add. -->
 
     <util:list id="shibboleth.RelyingPartyOverrides">
-        <bean parent="RelyingPartyByName" c:relyingPartyIds="https://sp.ccc.local/shibboleth">
+        <bean parent="RelyingPartyByName" c:relyingPartyIds="https://localhost/auth/realms/oidc-realm">
             <property name="profileConfigurations">
                 <list>
                     <bean parent="SAML2.SSO" p:encryptAssertions="false" p:postAuthenticationFlows="attribute-release" />

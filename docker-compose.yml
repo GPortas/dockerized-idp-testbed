@@ -1,60 +1,38 @@
-version: "3.1"
+version: "3.9"
 
 services:
-  #This handles all of the http request to simple cert issues and both the SP and IdP can share the same ports.
   httpd-proxy:
     build: ./httpd-proxy/
     networks:
-     - front
-     - back
+      - back
     ports:
-     - "80:80"
-     - "443:443"
+      - "80:80"
+      - "443:443"
 
   idp:
     build: ./idp/
     depends_on:
-     - ldap
+      ldap:
+        condition: service_started
     environment:
-     - JETTY_MAX_HEAP=64m
-     - JETTY_BROWSER_SSL_KEYSTORE_PASSWORD=password
-     - JETTY_BACKCHANNEL_SSL_KEYSTORE_PASSWORD=password
+      - JETTY_MAX_HEAP=64m
+      - JETTY_BROWSER_SSL_KEYSTORE_PASSWORD=password
+      - JETTY_BACKCHANNEL_SSL_KEYSTORE_PASSWORD=password
     expose:
-     - "4443"
+      - "4443"
     networks:
-     - back
+      - back
     secrets:
-     - source: idp_backchannel
-     - source: idp_browser
-     - source: idp_encryption
-     - source: idp_signing
-     - source: idp_sealer
+      - source: idp_backchannel
+      - source: idp_browser
+      - source: idp_encryption
+      - source: idp_signing
+      - source: idp_sealer
 
   ldap:
     build: ./ldap/
     networks:
-     - back
-
-  sp:
-    build: ./sp/
-    networks:
-     - back
-    secrets:
-     - source: sp_key
-
-  keycloak:
-    image: 'jboss/keycloak:16.1.1'
-    networks:
       - back
-    environment:
-      - KEYCLOAK_USER=keycloakdeveladminuser
-      - KEYCLOAK_PASSWORD=keycloakdeveladminpwd
-      - KEYCLOAK_IMPORT=/tmp/oidc-realm.json
-    ports:
-      - '8090:8080'
-    volumes:
-      - './keycloak/oidc-realm.json:/tmp/oidc-realm.json'
-    restart: always
 
 networks:
   front:
