@@ -11,6 +11,7 @@ services:
       - KEYCLOAK_PASSWORD=keycloak
       - KEYCLOAK_IMPORT=/tmp/oidc-realm.json
       - PROXY_ADDRESS_FORWARDING=true
+      - KEYCLOAK_LOGLEVEL=DEBUG
     expose:
       - "8080"
     ports:
